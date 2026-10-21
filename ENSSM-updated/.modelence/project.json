@@ -1,0 +1,8 @@
+{
+  "appId": "6ad375bb3284b342326e8a95",
+  "deploy": {
+    "environmentId": "6ad375e73284b342326e8aa0",
+    "appAlias": "enssm-mvcfab0lmvr",
+    "envAlias": "prod"
+  }
+}
