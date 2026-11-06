@@ -218,6 +218,7 @@ title2: 'Education in Algeria',
     // Navigation
     nav: {
       about: 'عن المدرسة',
+      pedagogy: 'البيداغوجيا',
       programs: 'البرامج',
       wajihat: 'الواجهات',
       gallery: 'المعرض',
@@ -757,13 +758,13 @@ export default function HomePage() {
   }, [selectedNews, selectedEvent]);
 
   const navBefore = [
-    { key: 'about', label: 'About' },
-    { key: 'programs', label: 'Pedagogy' },
-    { key: 'wajihat', label: 'Wajihat' },
+    { key: 'about', label: t.nav.about },
+    { key: 'programs', label: t.nav.programs },
+    { key: 'wajihat', label: t.nav.wajihat },
   ];
   const navAfter = [
-    { key: 'admission', label: 'Admission' },
-    { key: 'gallery', label: 'Gallery' },
+    { key: 'admission', label: t.nav.admission },
+    { key: 'gallery', label: t.nav.gallery },
   ];
   const goToEvent = (i: number) => setEventIndex((i + eventItems.length) % eventItems.length);
   const loc = (x: Localized) => x[language];
@@ -2135,7 +2136,7 @@ export default function HomePage() {
               <ul className="space-y-3">
                 {[
                   { key: 'about', label: t.nav.about },
-                  { key: 'programs', label: 'Pedagogy' },
+                  { key: 'programs', label: t.nav.programs },
                   { key: 'wajihat', label: t.nav.wajihat },
                   { key: 'news', label: t.nav.news },
                   { key: 'events', label: t.nav.events },
