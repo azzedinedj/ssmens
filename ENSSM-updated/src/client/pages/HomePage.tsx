@@ -1377,7 +1377,6 @@ export default function HomePage() {
                 achievementsKey: 'culturalAchievements' as const,
                 color: 'from-emerald-500 to-green-500',
                 bgColor: 'from-emerald-50 to-green-50',
-                directorName: isRTL ? 'د. يوسف حداد' : 'Dr. Youssef Haddad',
                 galleryImages: [
                   '/assets/cse1.jpeg',
                   '/assets/cse2.jpeg',
