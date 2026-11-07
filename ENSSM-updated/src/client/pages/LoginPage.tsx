@@ -45,8 +45,8 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex flex-col items-center gap-2 group">
-            <div className="w-20 h-20 rounded-2xl flex items-center justify-center border border-white/20 shadow-xl overflow-hidden">
-              <img src="/assets/pic5.jpeg" alt="ENS-SM Logo" className="w-full h-full object-cover" />
+            <div className="w-20 h-20 rounded-full flex items-center justify-center bg-white p-1.5 ring-2 ring-amber-400/60 shadow-2xl overflow-hidden group-hover:scale-105 transition-transform">
+              <img src="/assets/pic5.jpeg" alt="ENSSM Logo" className="w-full h-full object-contain rounded-full" />
             </div>
             <div>
               <p className="text-white font-bold text-lg leading-none">ENSSM</p>

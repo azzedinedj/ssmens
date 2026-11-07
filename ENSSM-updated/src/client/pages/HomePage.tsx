@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Users, BookOpen, MapPin, Mail, Clock, ChevronDown, Award, Heart, Globe, Menu, X, Images, ArrowRight, Sparkles, Target, Lightbulb, HandHeart, Building2, Calendar, CheckCircle2, Facebook, ExternalLink, Languages, Rocket, Building, Brain, Cog, Library, Camera, Newspaper, ChevronLeft, ChevronRight, GraduationCap, DoorOpen, Hand } from 'lucide-react';
+import { Users, BookOpen, MapPin, Mail, Clock, ChevronDown, Award, Heart, Globe, Menu, X, Images, ArrowRight, Sparkles, Target, Lightbulb, HandHeart, Building2, Calendar, CheckCircle2, Facebook, ExternalLink, Languages, Rocket, Building, Brain, Cog, Library, Camera, Newspaper, ChevronLeft, ChevronRight, GraduationCap, DoorOpen, Hand, Maximize2, Laptop, Calculator, FlaskConical, Dna, Zap, Cpu, BookA, Crown, Quote, Moon, TrendingUp, Trophy, Palette, ShieldCheck } from 'lucide-react';
 import { Button } from '@/client/components/ui/Button';
 import ChatBot from '@/client/components/ChatBot';
 
@@ -77,12 +77,8 @@ title2: 'Education in Algeria',
       firstGraduationDesc: '292 specialized teachers graduated',
       expansion: 'Expansion',
       expansionDesc: "636 new positions announced",
-      newSeats: 'New Enrollment',
-      newSeatsDesc: 'Opening 636 new seats for the program',
-      bacAdmission: 'Baccalaureate Admission',
-      bacAdmissionDesc: 'From the 2026 session, admission to the school is also open to baccalaureate holders',
-      sixYearProgram: '6-Year Training Program',
-      sixYearProgramDesc: 'A six-year program for baccalaureate holders to become specialized teachers of deaf and hard-of-hearing students',
+      bac2026: 'Baccalaureate Admission & 6-Year Program',
+      bac2026Desc: 'From the 2026 session, admission opened to baccalaureate holders with 636 new seats for a specialized six-year training program for teachers of deaf and hard-of-hearing students',
     },
     // Programs
     programs: {
@@ -257,7 +253,7 @@ title2: 'Education in Algeria',
 
       missionText2: 'تعمل المدرسة أيضًا على تطوير تخصصات تقنية جديدة، مثل الهندسة المدنية والكهربائية، من أجل توسيع آفاق التعليم أمام الطلبة الصم وتوفير خيارات مهنية واعدة، مع تعزيز استخدام لغة الإشارة في مختلف المجالات و الفضاءات العمومية.\n\nإننا نسير بخطى ثابتة نحو مستقبل تكون فيه الجزائر نموذجًا رائدًا في التعليم الدامج، ليس فقط على الصعيد الوطني، بل أيضًا على المستوى الإفريقي والعربي. وقد لمسنا هذا الطموح من خلال الإهتمام المتزايد من دول عديدة بطلب الاستفادة من تجربتنا الفريدة.',
       keyTrainingAreas: 'مجالات التدريب الرئيسية',
-      specializedTraining: 'تدريب متخصص',
+      specializedTraining: 'التكوين المتخصص',
       specializedTrainingDesc: 'برنامج مدته ست سنوات مفتوح لحاملي شهادة البكالوريا، يركز على أحدث منهجيات التدريس للطلاب الصم وضعاف السمع.',
       inclusiveEducation: 'التعليم الشامل',
       inclusiveEducationDesc: 'ملتزمون بتوفير تعليم جيد مكيف للاندماج الاجتماعي والاقتصادي لجميع الطلاب.',
@@ -286,12 +282,8 @@ title2: 'Education in Algeria',
       firstGraduationDesc: 'تخرج 292 معلم متخصص',
       expansion: 'التوسع',
       expansionDesc: 'الإعلان عن 636 منصب جديد ',
-      newSeats: 'تسجيل جديد',
-      newSeatsDesc: 'فتح 636 مقعداً جديداً للبرنامج',
-      bacAdmission: 'القبول بشهادة البكالوريا',
-      bacAdmissionDesc: 'ابتداءً من دورة 2026، أصبح الالتحاق بالمدرسة مفتوحاً أيضاً لحاملي شهادة البكالوريا',
-      sixYearProgram: 'برنامج التكوين لمدة 6 سنوات',
-      sixYearProgramDesc: 'برنامج مدته ست سنوات لحاملي شهادة البكالوريا لتكوين أساتذة متخصصين في تعليم الصم وضعاف السمع',
+      bac2026: 'القبول لحاملي البكالوريا وبرنامج التكوين (6 سنوات)',
+      bac2026Desc: 'ابتداءً من دورة 2026، فُتح الالتحاق بالمدرسة لحاملي شهادة البكالوريا بتخصيص 636 مقعداً جديداً ضمن برنامج تكويني مدته 6 سنوات لإعداد أساتذة متخصصين في تعليم الصم وضعاف السمع',
     },
     // Programs
     programs: {
@@ -424,22 +416,265 @@ title2: 'Education in Algeria',
   },
 };
 
-const specializations = [
-  { name: 'Computer Science', nameAr: 'الإعلام الآلي', icon: '💻' },
-  { name: 'Mathematics', nameAr: 'الرياضيات', icon: '📐' },
-  { name: 'Physics-Chemistry', nameAr: 'الفيزياء والكيمياء', icon: '⚗️' },
-  { name: 'Biological Sciences', nameAr: 'علوم الحياة', icon: '🧬' },
-  { name: 'Electrical Engineering', nameAr: 'الهندسة الكهربائية', icon: '⚡' },
-  { name: 'Process Engineering', nameAr: 'هندسة الطرائق', icon: '⚙️' },
-  { name: 'Arabic', nameAr: 'اللغة العربية', icon: '🔤' },
-  { name: 'English', nameAr: 'اللغة الإنجليزية', icon: '🇬🇧' },
-  { name: 'Amazigh', nameAr: 'الأمازيغية', icon: 'ⵉ' },
-  { name: 'French', nameAr: 'اللغة الفرنسية', icon: '🇫🇷' },
-  { name: 'Islamic Studies', nameAr: 'العلوم الإسلامية', icon: '🕌' },
-  { name: 'History-Geography', nameAr: 'التاريخ والجغرافيا', icon: '🌍' },
-  { name: 'Economics & Management', nameAr: 'الاقتصاد والتسيير', icon: '📊' },
-  { name: 'Sport', nameAr: 'الرياضة', icon: '⚽' },
-  { name: 'Arts', nameAr: 'الفنون', icon: '🎨' },
+type AcademicDept = 'stem' | 'languages' | 'humanities' | 'arts_sports';
+
+interface SpecializationItem {
+  id: string;
+  name: string;
+  nameAr: string;
+  category: AcademicDept;
+  categoryNameEn: string;
+  categoryNameAr: string;
+  icon: typeof Laptop;
+  degreeEn: string;
+  degreeAr: string;
+  descEn: string;
+  descAr: string;
+  skillsEn: string[];
+  skillsAr: string[];
+}
+
+const academicDepartments = [
+  { id: 'all' as const, nameEn: 'All Specializations', nameAr: 'جميع التخصصات', count: 15, icon: BookOpen },
+  { id: 'stem' as const, nameEn: 'Sciences & Technology', nameAr: 'العلوم والتكنولوجيا', count: 6, icon: Cpu },
+  { id: 'languages' as const, nameEn: 'Languages & Literature', nameAr: 'الآداب واللغات', count: 4, icon: Languages },
+  { id: 'humanities' as const, nameEn: 'Human & Social Sciences', nameAr: 'العلوم الإنسانية والاجتماعية', count: 3, icon: Globe },
+  { id: 'arts_sports' as const, nameEn: 'Arts & Physical Education', nameAr: 'الفنون والتربية البدنية', count: 2, icon: Trophy },
+];
+
+const specializations: SpecializationItem[] = [
+  // Sciences & Technology (6)
+  {
+    id: 'cs',
+    name: 'Computer Science',
+    nameAr: 'الإعلام الآلي',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: Laptop,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Software engineering, algorithms, and AI-driven assistive technologies adapted for deaf learners.',
+    descAr: 'تكوين بيداغوجي وتكنولوجي متقدم في البرمجة، هندسة النظم، وتقنيات الذكاء الاصطناعي الموجهة لتعليم الصم.',
+    skillsEn: ['Coding & Sign Language', 'Educational AI', 'Accessible Platforms'],
+    skillsAr: ['البرمجة ولغة الإشارة', 'الذكاء الاصطناعي البيداغوجي', 'تطوير المنصات التعليمية'],
+  },
+  {
+    id: 'math',
+    name: 'Mathematics',
+    nameAr: 'الرياضيات',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: Calculator,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Pure and applied mathematics taught via advanced visual pedagogy, geometry, and specialized signs.',
+    descAr: 'تدريس الرياضيات المجردة والتطبيقية باستخدام أحدث الوسائط البصرية والبيداغوجيا المكيفة للصم.',
+    skillsEn: ['Geometry & Analysis', 'Visual Didactics', 'Adaptive Problem Solving'],
+    skillsAr: ['الهندسة والتحليل', 'الديداكتيك البصري', 'حل المسائل المكيفة'],
+  },
+  {
+    id: 'physics',
+    name: 'Physics-Chemistry',
+    nameAr: 'الفيزياء والكيمياء',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: FlaskConical,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Experimental sciences, laboratory protocols, and physical phenomena visual interpretation.',
+    descAr: 'التجارب المخبرية الآمنة، المفاهيم الفيزيائية والكيميائية، وتبسيط العلوم التجريبية بلغة الإشارة.',
+    skillsEn: ['Adaptive Lab Work', 'Safety & Chemistry', 'Visual Physics'],
+    skillsAr: ['التجارب المخبرية المكيفة', 'السلامة والكيمياء العامة', 'الفيزياء البصرية'],
+  },
+  {
+    id: 'biology',
+    name: 'Biological Sciences',
+    nameAr: 'علوم الحياة والأرض',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: Dna,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Life sciences, human anatomy, ecology, and specialized medical and biological sign lexicons.',
+    descAr: 'علوم الحياة، علم وظائف الأعضاء، وعلم الوراثة مع التركيز على النماذج التفاعلية ثلاثية الأبعاد.',
+    skillsEn: ['Biological Sign Terms', '3D Anatomy Models', 'Ecology & Health'],
+    skillsAr: ['المصطلحات البيولوجية الإشارية', 'النماذج ثلاثية الأبعاد', 'علوم البيئة والصحة'],
+  },
+  {
+    id: 'electrical',
+    name: 'Electrical Engineering',
+    nameAr: 'الهندسة الكهربائية',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: Zap,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Electric circuits, automated systems, electronics, and digital technical lab work.',
+    descAr: 'الدوائر الكهربائية، الإلكترونيات الرقمية، وأنظمة الطاقة مع برامج المحاكاة الهندسية المتقدمة.',
+    skillsEn: ['Electronics & Simulation', 'Automated Systems', 'Technical Workshops'],
+    skillsAr: ['الإلكترونيات والمحاكاة', 'الأنظمة الآلية', 'ورشات التطبيق التقني'],
+  },
+  {
+    id: 'process',
+    name: 'Process Engineering',
+    nameAr: 'هندسة الطرائق',
+    category: 'stem',
+    categoryNameEn: 'Sciences & Technology',
+    categoryNameAr: 'العلوم والتكنولوجيا',
+    icon: Cpu,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Industrial chemical transformations, thermodynamic operations, and quality control methodologies.',
+    descAr: 'التحويلات الكيميائية الصناعية، مراقبة الجودة، والعمليات التحويلية المتقدمة في البيئات المهنية.',
+    skillsEn: ['Transformation Processes', 'Industrial QC', 'Engineering Schematics'],
+    skillsAr: ['العمليات التحويلية', 'مراقبة الجودة الصناعية', 'المخططات الهندسية'],
+  },
+
+  // Languages & Literature (4)
+  {
+    id: 'arabic',
+    name: 'Arabic Language & Literature',
+    nameAr: 'اللغة العربية وآدابها',
+    category: 'languages',
+    categoryNameEn: 'Languages & Literature',
+    categoryNameAr: 'الآداب واللغات',
+    icon: BookA,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Classical Arabic grammar, rhetoric, literary analysis, and visual reading pedagogy.',
+    descAr: 'علوم اللسان العربي، الأدب، النحو، وبيداغوجيا القراءة والكتابة المكيفة للتلاميذ الصم.',
+    skillsEn: ['Grammar & Rhetoric', 'Visual Reading Didactics', 'Arabic Sign Lexicons'],
+    skillsAr: ['البلاغة وقواعد النحو', 'ديداكتيك القراءة البصرية', 'المعاجم الإشارية العربية'],
+  },
+  {
+    id: 'english',
+    name: 'English Language',
+    nameAr: 'اللغة الإنجليزية',
+    category: 'languages',
+    categoryNameEn: 'Languages & Literature',
+    categoryNameAr: 'الآداب واللغات',
+    icon: Languages,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'English linguistic mastery, written literacy development, and International Sign (IS) integration.',
+    descAr: 'تعليم اللغة الإنجليزية كلغة عالمية، والترجمة بين لغة الإشارة الدولية والإنجليزية المكتوبة.',
+    skillsEn: ['International Sign (IS)', 'Visual Grammar', 'Academic Translation'],
+    skillsAr: ['لغة الإشارة الدولية (IS)', 'القواعد والمحادثة البصرية', 'الترجمة الأكاديمية'],
+  },
+  {
+    id: 'french',
+    name: 'French Language',
+    nameAr: 'اللغة الفرنسية',
+    category: 'languages',
+    categoryNameEn: 'Languages & Literature',
+    categoryNameAr: 'الآداب واللغات',
+    icon: Quote,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'French syntax, literature, visual phonology correspondence, and written composition.',
+    descAr: 'الأدب واللغة الفرنسية، تقنيات التواصل اللساني المكتوب، والمقاربات البيداغوجية المتكيفة.',
+    skillsEn: ['French Linguistics', 'Literary Analysis', 'Adaptive Writing Pedagogy'],
+    skillsAr: ['اللسانيات الفرنسية', 'التحليل الأدبي والإنشاء', 'بيداغوجيا الكتابة المكيفة'],
+  },
+  {
+    id: 'amazigh',
+    name: 'Amazigh Language',
+    nameAr: 'اللغة الأمازيغية',
+    category: 'languages',
+    categoryNameEn: 'Languages & Literature',
+    categoryNameAr: 'الآداب واللغات',
+    icon: Crown,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Tifinagh script, Amazigh linguistics, national linguistic heritage, and adaptive pedagogical signs.',
+    descAr: 'تدريس اللغة الأمازيغية بخط تيفيناغ، الموروث اللغوي والثقافي، والتطبيقات الإشارية المكيفة.',
+    skillsEn: ['Tifinagh & Literature', 'Heritage Sign Terms', 'Language Didactics'],
+    skillsAr: ['خط تيفيناغ والأدب الأمازيغي', 'المصطلحات التراثية', 'الديداكتيك اللغوي'],
+  },
+
+  // Human & Social Sciences (3)
+  {
+    id: 'islamic',
+    name: 'Islamic Studies',
+    nameAr: 'العلوم الإسلامية',
+    category: 'humanities',
+    categoryNameEn: 'Human & Social Sciences',
+    categoryNameAr: 'العلوم الإنسانية والاجتماعية',
+    icon: Moon,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Islamic jurisprudence, ethics, theology, and standardized religious sign language terminology.',
+    descAr: 'علوم الشريعة والتربية الإسلامية، فقه المعاملات، والمصطلحات الدينية بلغة الإشارة المعتمدة.',
+    skillsEn: ['Islamic Values & Ethics', 'Religious Sign Lexicon', 'History & Biography'],
+    skillsAr: ['القيم والأخلاق الإسلامية', 'المصطلحات الدينية الإشارية', 'السيرة والتاريخ'],
+  },
+  {
+    id: 'history',
+    name: 'History & Geography',
+    nameAr: 'التاريخ والجغرافيا',
+    category: 'humanities',
+    categoryNameEn: 'Human & Social Sciences',
+    categoryNameAr: 'العلوم الإنسانية والاجتماعية',
+    icon: Globe,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Algerian and world history, modern cartography, geopolitical analysis, and interactive visual chronologies.',
+    descAr: 'تاريخ الجزائر والعالم، الجغرافيا والخرائط الرقمية المعززة بالوسائط البصرية التفاعلية.',
+    skillsEn: ['Cartography & GIS', 'Visual Historical Archives', 'Geopolitical Studies'],
+    skillsAr: ['قراءة الخرائط والبيانات', 'التوثيق التاريخي المرئي', 'الجغرافيا السياسية والاقتصادية'],
+  },
+  {
+    id: 'economics',
+    name: 'Economics & Management',
+    nameAr: 'الاقتصاد والتسيير',
+    category: 'humanities',
+    categoryNameEn: 'Human & Social Sciences',
+    categoryNameAr: 'العلوم الإنسانية والاجتماعية',
+    icon: TrendingUp,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Financial accounting, corporate management, macroeconomics, entrepreneurship, and commercial law.',
+    descAr: 'مبادئ الاقتصاد والمحاسبة المالية، إدارة المؤسسات، والتسيير المالي والمقاولاتية.',
+    skillsEn: ['Accounting & Financial Analysis', 'Entrepreneurship', 'Economic Legislation'],
+    skillsAr: ['المحاسبة والتحليل المالي', 'إدارة المشاريع والمقاولاتية', 'التشريعات الاقتصادية'],
+  },
+
+  // Arts & Physical Education (2)
+  {
+    id: 'sports',
+    name: 'Physical Education & Sports',
+    nameAr: 'التربية البدنية والرياضية',
+    category: 'arts_sports',
+    categoryNameEn: 'Arts & Physical Education',
+    categoryNameAr: 'الفنون والتربية البدنية',
+    icon: Trophy,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Adaptive physical training, Deaflympics athletic rules, biomechanics, and sports coaching psychology.',
+    descAr: 'التدريب الرياضي المكيف، الألعاب البارالمبية ورياضات الصم، والإعداد البدني والنفسي للرياضيين.',
+    skillsEn: ['Deaflympics Regulations', 'Fitness & Conditioning', 'Coaching & Officiating'],
+    skillsAr: ['رياضات الصم وقوانينها', 'اللياقة البدنية وإعادة التأهيل', 'التحكيم والتوجيه الرياضي'],
+  },
+  {
+    id: 'arts',
+    name: 'Fine & Visual Arts',
+    nameAr: 'الفنون التشكيلية والتربية الفنية',
+    category: 'arts_sports',
+    categoryNameEn: 'Arts & Physical Education',
+    categoryNameAr: 'الفنون والتربية البدنية',
+    icon: Palette,
+    degreeEn: 'Secondary School Teacher (PES)',
+    degreeAr: 'أستاذ التعليم الثانوي (PES)',
+    descEn: 'Visual arts expression, drawing, graphic design, artistic history, and visual sensory creativity.',
+    descAr: 'التعبير الفني البصري، الرسم والتصميم الجرافيكي، تاريخ الفن، واستثمار الحاسة البصرية في الإبداع.',
+    skillsEn: ['Graphic Design & Drawing', 'Aesthetics & Art History', 'Exhibitions & Workshops'],
+    skillsAr: ['الرسم والتصميم الجرافيكي', 'علم الجمال وتاريخ الفن', 'المعارض والورشات الإبداعية'],
+  },
 ];
 
 const stats = [
@@ -449,13 +684,32 @@ const stats = [
   { value: 1000, suffix: '+', suffixAr: '+', labelKey: 'firstGraduates' as const, icon: Award, color: 'from-green-500 to-emerald-500' },
 ];
 
-const galleryImages = [
-  { url: '/assets/university compus.jpeg', alt: 'University campus' },
-  { url: '/assets/classroom.jpg', alt: 'Classroom learning' },
-  { url: '/assets/student studying.jpeg', alt: 'Students studying' },
-  { url: '/assets/graduation.jfif', alt: 'Graduation ceremony' },
-  { url: '/assets/Teacher in classroom.jpeg', alt: 'Teacher in classroom' },
-  { url: '/assets/Education concept.jfif', alt: 'Education concept' },
+const galleryImages: { url: string; alt: string; altAr?: string }[] = [
+  { url: '/assets/university compus.jpeg', alt: 'University campus', altAr: 'الحرم الجامعي' },
+  { url: '/assets/classroom.jpg', alt: 'Classroom learning', altAr: 'قاعات التدريس' },
+  { url: '/assets/student studying.jpeg', alt: 'Students studying', altAr: 'الطلبة أثناء الدراسة' },
+  { url: '/assets/graduation.jfif', alt: 'Graduation ceremony', altAr: 'حفل التخرج' },
+  { url: '/assets/Teacher in classroom.jpeg', alt: 'Teacher in classroom', altAr: 'التكوين داخل الأقسام' },
+  { url: '/assets/Education concept.jfif', alt: 'Education concept', altAr: 'المفاهيم التربوية والتعليمية' },
+  { url: '/assets/gallery/1.jpg', alt: 'School Activities 1', altAr: 'أنشطة وفعاليات المدرسة 1' },
+  { url: '/assets/gallery/2.jpg', alt: 'School Activities 2', altAr: 'أنشطة وفعاليات المدرسة 2' },
+  { url: '/assets/gallery/3.jpg', alt: 'Campus Moments 3', altAr: 'لحظات من الحرم الجامعي 3' },
+  { url: '/assets/gallery/5.jpg', alt: 'Student Training 5', altAr: 'تكوين الطلبة والأساتذة 5' },
+  { url: '/assets/gallery/6.jpg', alt: 'Educational Session 6', altAr: 'جلسة تعليمية وتطبيقية 6' },
+  { url: '/assets/gallery/7.jpg', alt: 'School Life 7', altAr: 'الحياة الطلابية بالمدرسة 7' },
+  { url: '/assets/gallery/8.jpg', alt: 'Campus Facilities 8', altAr: 'مرافق المدرسة العليا 8' },
+  { url: '/assets/gallery/10.jpg', alt: 'Academic Activities 10', altAr: 'الأنشطة الأكاديمية 10' },
+  { url: '/assets/gallery/12.jpg', alt: 'Classroom Experience 12', altAr: 'التجربة الصفية 12' },
+  { url: '/assets/gallery/13.jpg', alt: 'Workshops & Events 13', altAr: 'ورشات العمل والفعاليات 13' },
+  { url: '/assets/gallery/14.jpg', alt: 'Teacher Training 14', altAr: 'إعداد وتكوين الأساتذة 14' },
+  { url: '/assets/gallery/15.jpg', alt: 'Specialized Methods 15', altAr: 'مناهج وطرائق متخصصة 15' },
+  { url: '/assets/gallery/19.jpg', alt: 'Community & Culture 19', altAr: 'التواصل والنشاط الثقافي 19' },
+  { url: '/assets/gallery/22.jpg', alt: 'Campus Atmosphere 22', altAr: 'أجواء الحرم الجامعي 22' },
+  { url: '/assets/gallery/45.jpg', alt: 'Educational Programs 45', altAr: 'البرامج التكوينية والتربوية 45' },
+  { url: '/assets/gallery/47.jpg', alt: 'Student Collaboration 47', altAr: 'العمل الجماعي الطلابي 47' },
+  { url: '/assets/gallery/49.jpg', alt: 'Honors & Milestones 49', altAr: 'التكريم والمحطات البارزة 49' },
+  { url: '/assets/gallery/54.jpg', alt: 'Interactive Learning 54', altAr: 'التعلم التفاعلي 54' },
+  { url: '/assets/gallery/55.jpg', alt: 'School Community 55', altAr: 'أسرة المدرسة العليا 55' },
 ];
 
 type Localized = { en: string; ar: string };
@@ -500,7 +754,7 @@ const newsItems: {
     category: 'events',
     image: '/assets/11.jpg',
     date: { en: '20 August 2026', ar: '20 أوت 2026' },
-    title: { en: 'Open House Day 2026', ar: 'يوم الأبواب المفتوحة 2026' },
+    title: { en: 'Open Day 2026', ar: 'يوم الأبواب المفتوحة 2026' },
     excerpt: { en: 'Campus tours, classroom demonstrations and admission advice across the whole campus.', ar: 'زيارات للحرم الجامعي وعروض تطبيقية ونصائح حول القبول عبر كامل الحرم.' },
     body: [
       { en: 'Visitors can tour the campus, meet professors, attend classroom demonstrations, get admission advice and discover student activities, from 09:00 to 17:00.', ar: 'يمكن للزوار التجول في الحرم الجامعي ولقاء الأساتذة وحضور عروض تطبيقية داخل القاعات والحصول على نصائح حول القبول واكتشاف الأنشطة الطلابية، من الساعة 09:00 إلى 17:00.' },
@@ -529,19 +783,9 @@ const newsItems: {
       { en: 'These partnerships give students and teachers access to exchanges and international training.', ar: 'تتيح هذه الشراكات للطلبة والأساتذة الاستفادة من التبادل والتكوين الدولي.' },
     ],
   },
-  {
-    id: 'ai-house',
-    category: 'innovation',
-    image: '/assets/aiHouse.jfif',
-    title: { en: 'Artificial Intelligence House: Tools for Sign Language', ar: 'دار الذكاء الاصطناعي: أدوات للغة الإشارة' },
-    excerpt: { en: 'AI-powered sign language tools, 8 published research papers and 100+ students trained.', ar: 'أدوات ذكاء اصطناعي للغة الإشارة و8 أوراق بحثية منشورة وأكثر من 100 طالب مكوَّن.' },
-    body: [
-      { en: 'The Artificial Intelligence House brings students and researchers together around AI. Its achievements include AI-powered sign language tools, 8 published research papers and more than 100 students trained in AI fundamentals.', ar: 'تجمع دار الذكاء الاصطناعي الطلبة والباحثين حول الذكاء الاصطناعي. ومن إنجازاتها أدوات ذكاء اصطناعي للغة الإشارة و8 أوراق بحثية منشورة وتكوين أكثر من 100 طالب في أساسيات الذكاء الاصطناعي.' },
-    ],
-  },
 ];
 
-const newsCategories: NewsCategory[] = ['admissions', 'events', 'partnerships', 'innovation'];
+const newsCategories: NewsCategory[] = ['admissions', 'events', 'partnerships'];
 const newsCategoryStyles: Record<NewsCategory, string> = {
   admissions: 'bg-blue-100 text-blue-700',
   events: 'bg-purple-100 text-purple-700',
@@ -595,7 +839,7 @@ const eventItems: {
     grad: 'from-emerald-500 to-green-600',
     softText: 'text-emerald-300',
     accent: 'text-emerald-600',
-    title: { en: 'Open House Day 2026', ar: 'يوم الأبواب المفتوحة 2026' },
+    title: { en: 'Open Day 2026', ar: 'يوم الأبواب المفتوحة 2026' },
     date: { en: '20 August 2026', ar: '20 أوت 2026' },
     time: { en: '09:00 – 17:00', ar: '09:00 – 17:00' },
     location: { en: 'Entire campus', ar: 'كامل الحرم الجامعي' },
@@ -701,6 +945,8 @@ export default function HomePage() {
   const [eventIndex, setEventIndex] = useState(0);
   const [eventsPaused, setEventsPaused] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<(typeof eventItems)[number] | null>(null);
+  const [lightbox, setLightbox] = useState<{ url: string; title?: string } | null>(null);
+  const [selectedDept, setSelectedDept] = useState<'all' | AcademicDept>('all');
 
   const t = translations[language];
   const isRTL = language === 'ar';
@@ -710,10 +956,17 @@ export default function HomePage() {
   };
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -744,9 +997,13 @@ export default function HomePage() {
 
   // modals: Escape closes, page scroll locked
   useEffect(() => {
-    if (!selectedNews && !selectedEvent) return;
+    if (!selectedNews && !selectedEvent && !lightbox) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setSelectedNews(null); setSelectedEvent(null); }
+      if (e.key === 'Escape') { 
+        setSelectedNews(null); 
+        setSelectedEvent(null);
+        setLightbox(null);
+      }
     };
     document.addEventListener('keydown', onKey);
     const previousOverflow = document.body.style.overflow;
@@ -755,7 +1012,7 @@ export default function HomePage() {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [selectedNews, selectedEvent]);
+  }, [selectedNews, selectedEvent, lightbox]);
 
   const navBefore = [
     { key: 'about', label: t.nav.about },
@@ -780,20 +1037,20 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
+        isScrolled ? 'bg-white shadow-md border-b border-gray-100' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="flex items-center gap-3.5 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <div className="relative">
-                <div className="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
-                  <img src="/assets/pic5.jpeg" alt="ENS-SM Logo" className="w-full h-full object-cover" style={{ imageRendering: '-webkit-optimize-contrast' }} />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-xl transition-all duration-300 overflow-hidden bg-white p-1 ring-2 ring-amber-400/60 group-hover:scale-105">
+                  <img src="/assets/pic5.jpeg" alt="ENSSM Logo" className="w-full h-full object-contain rounded-full" />
                 </div>
               </div>
               <div className="hidden sm:block">
-                <span className={`font-bold text-lg transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>ENSSM</span>
-                <span className={`text-xs block transition-colors ${isScrolled ? 'text-gray-500' : 'text-white/80'}`}>{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم' : 'Higher School for Teachers of Deaf and Mute'}</span>
+                <span className={`font-bold text-xl tracking-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>ENSSM</span>
+                <span className={`text-xs font-medium block transition-colors ${isScrolled ? 'text-gray-600' : 'text-white/90'}`}>{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم' : 'Higher School for Teachers of Deaf and Mute'}</span>
               </div>
             </div>
 
@@ -951,11 +1208,11 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
         </div>
 
-        {/* Animated Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Ambient Gradient Glows (GPU optimized) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-500/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
@@ -1059,35 +1316,45 @@ export default function HomePage() {
           </div>
 
           {/* Director & Mission Section */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch mb-20">
             {/* Left Side - Director Picture */}
-            <div className="relative">
+            <div className="relative flex">
               <div className={`absolute -top-4 ${isRTL ? '-right-4' : '-left-4'} w-24 h-24 bg-blue-200 rounded-full opacity-50 blur-2xl`} />
               <div className={`absolute -bottom-4 ${isRTL ? '-left-4' : '-right-4'} w-32 h-32 bg-purple-200 rounded-full opacity-50 blur-2xl`} />
-              <div className="bg-white rounded-3xl p-6 shadow-xl">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-full max-w-sm h-[450px] rounded-2xl overflow-hidden shadow-lg mb-6">
-                    <img 
-                      src="/assets/director.jpeg" 
-                      alt="Director" 
-                      className="w-full h-full object-cover"
-                    />
+              <div className="bg-white rounded-3xl p-6 shadow-xl w-full flex flex-col justify-between border border-slate-100">
+                <div 
+                  onClick={() => setLightbox({ url: "/assets/director.jpeg", title: `${isRTL ? 'كلمة السيد مدير المدرسة' : "Director's Word"}: ${isRTL ? 'أ.د. زقار فتحي' : 'Pr. ZEGAR FETHI'}` })}
+                  className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md mb-6 bg-gray-100 flex items-center justify-center cursor-pointer group"
+                >
+                  <img 
+                    src="/assets/director.jpeg" 
+                    alt="Director" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-30 group-hover:opacity-60 transition-opacity" />
+                  <div className="absolute bottom-3 right-3 z-20">
+                    <span className="p-2.5 bg-white/95 rounded-full shadow-xl text-gray-900 flex items-center gap-1.5 text-xs font-semibold transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <Maximize2 className="w-4 h-4 text-blue-600" />
+                      <span>{isRTL ? 'تكبير' : 'View'}</span>
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{t.about.missionTitle}</h3>
-                    <p className="text-xl font-bold text-gray-500">{isRTL ? 'ب  .زقعار فتحي ' : 'Pr. ZEGAR FETHI'}</p>
-                  </div>
+                </div>
+                <div className="text-center pb-2">
+                  <h3 className="text-xl font-bold text-gray-900">{isRTL ? 'مدير المدرسة العليا' : "Director of the Higher School"}</h3>
+                  <p className="text-xl font-bold text-blue-600 mt-1">{isRTL ? 'أ.د. زقار فتحي' : 'Pr. ZEGAR FETHI'}</p>
+                  <p className="text-xs text-gray-500 mt-1">{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم - بني مسوس' : 'Higher School for Teachers of Deaf and Mute - Beni Messous'}</p>
                 </div>
               </div>
             </div>
 
             {/* Right Side - Mission & Key Training */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-3xl p-8 shadow-xl">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  {t.about.missionTitle}
+            <div className="space-y-6 flex flex-col justify-between">
+              <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 flex-1 flex flex-col justify-center">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-2.5 h-8 bg-blue-600 rounded-full inline-block" />
+                  {isRTL ? 'كلمة السيد المدير' : t.about.missionTitle}
                 </h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   {t.about.missionText1}
                 </p>
               </div>
@@ -1125,25 +1392,41 @@ export default function HomePage() {
           {/* Features Grid */}
           <div className="grid lg:grid-cols-3 gap-8">
             {[
-              { titleKey: 'specialized', descKey: 'specializedTrainingDesc', image: '/assets/specialized training.jfif' },
+              { titleKey: 'specializedTraining', descKey: 'specializedTrainingDesc', image: '/assets/specialized training.jfif' },
               { titleKey: 'inclusiveEducation', descKey: 'inclusiveEducationDesc', image: '/assets/WhatsApp Image 2026-04-13 at 19.35.28.jpeg' },
               { titleKey: 'firstInAfrica', descKey: 'firstInAfricaDesc', image: '/assets/first in africa.jfif' },
             ].map((feature) => (
               <div
                 key={feature.titleKey}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col border border-slate-100"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div 
+                  onClick={() => setLightbox({ url: feature.image, title: t.about[feature.titleKey as keyof typeof t.about] })}
+                  className="relative h-64 sm:h-72 w-full overflow-hidden bg-gray-100 cursor-pointer group"
+                >
                   <img
                     src={feature.image}
                     alt={t.about[feature.titleKey as keyof typeof t.about]}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-70 transition-opacity" />
+                  <div className="absolute bottom-3 right-3 z-20">
+                    <span className="p-2.5 bg-white/95 rounded-full shadow-xl text-gray-900 flex items-center gap-1.5 text-xs font-semibold transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <Maximize2 className="w-4 h-4 text-blue-600" />
+                      <span>{isRTL ? 'عرض كامل' : 'View'}</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{t.about[feature.titleKey as keyof typeof t.about]}</h3>
-                  <p className="text-white/80">{t.about[feature.descKey as keyof typeof t.about]}</p>
+
+                <div className="p-7 flex flex-col flex-1 justify-between bg-white">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      {t.about[feature.titleKey as keyof typeof t.about]}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                      {t.about[feature.descKey as keyof typeof t.about]}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1177,9 +1460,7 @@ export default function HomePage() {
                 { year: '2023', eventKey: 'firstYear', descKey: 'firstYearDesc' },
                 { year: '2024', eventKey: 'firstGraduation', descKey: 'firstGraduationDesc' },
                 { year: '2025', eventKey: 'expansion', descKey: 'expansionDesc' },
-                { year: '2026', eventKey: 'newSeats', descKey: 'newSeatsDesc' },
-                { year: '2026', eventKey: 'bacAdmission', descKey: 'bacAdmissionDesc' },
-                { year: '2026', eventKey: 'sixYearProgram', descKey: 'sixYearProgramDesc' },
+                { year: '2026', eventKey: 'bac2026', descKey: 'bac2026Desc' },
               ].map((item, index) => (
                 <div
                   key={item.eventKey}
@@ -1209,43 +1490,131 @@ export default function HomePage() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <BookOpen className="w-4 h-4" />
+      <section id="programs" className="py-24 bg-gradient-to-b from-white via-blue-50/20 to-white relative overflow-hidden">
+        {/* Subtle ambient light */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-5 py-2 rounded-full text-sm font-semibold mb-6 shadow-sm border border-blue-200/80">
+              <BookOpen className="w-4 h-4 text-blue-600" />
               {t.programs.badge}
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              {t.programs.title1}
-              <span className="block text-purple-600">{t.programs.title2}</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+              {t.programs.title1}{' '}
+              <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                {t.programs.title2}
+              </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {t.programs.description}
             </p>
           </div>
 
-          {/* Specializations Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-16">
-            {specializations.map((spec) => (
-              <div
-                key={spec.name}
-                className="group relative bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 cursor-default overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10 flex items-center gap-4">
-                  <span className="text-3xl group-hover:scale-125 transition-transform duration-300">{spec.icon}</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">
-                      {isRTL ? spec.nameAr : spec.name}
-                    </h3>
-                    <p className={`text-sm text-gray-500 group-hover:text-white/80 transition-colors duration-300 ${isRTL ? '' : 'font-arabic'}`} dir={isRTL ? 'ltr' : 'rtl'}>
-                      {isRTL ? spec.name : spec.nameAr}
-                    </p>
+          {/* Department Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-14">
+            {academicDepartments.map((dept) => {
+              const DeptIcon = dept.icon;
+              const isActive = selectedDept === dept.id;
+              return (
+                <button
+                  key={dept.id}
+                  onClick={() => setSelectedDept(dept.id)}
+                  className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25 ring-2 ring-blue-500/30 scale-[1.03]'
+                      : 'bg-white hover:bg-blue-50/60 text-gray-700 hover:text-blue-700 border border-gray-200/90 shadow-sm'
+                  }`}
+                >
+                  <DeptIcon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                  <span>{isRTL ? dept.nameAr : dept.nameEn}</span>
+                  <span
+                    className={`text-xs px-2.5 py-0.5 rounded-full font-bold transition-colors ${
+                      isActive
+                        ? 'bg-white/20 text-white border border-white/30'
+                        : 'bg-gray-100 text-gray-600'
+                    }`}
+                  >
+                    {dept.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Academic Specializations Grid (Site Theme: Blue / Indigo / Purple) */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-20">
+            {specializations
+              .filter((spec) => selectedDept === 'all' || spec.category === selectedDept)
+              .map((spec) => {
+                const SpecIcon = spec.icon;
+                return (
+                  <div
+                    key={spec.id}
+                    className="relative bg-white rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between overflow-hidden group"
+                  >
+                    {/* Top prestige gradient accent bar matching site theme */}
+                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 opacity-90 group-hover:h-1.5 transition-all duration-300" />
+
+                    <div>
+                      {/* Top Metadata Header: Department & Degree Pill */}
+                      <div className="flex items-center justify-between gap-2 mb-5">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200/70">
+                          {isRTL ? spec.categoryNameAr : spec.categoryNameEn}
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80">
+                          <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
+                          <span>PES • 6 {isRTL ? 'سنوات' : 'Years'}</span>
+                        </span>
+                      </div>
+
+                      {/* Icon + Title */}
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 flex-shrink-0">
+                          <SpecIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors text-lg sm:text-xl leading-snug">
+                            {isRTL ? spec.nameAr : spec.name}
+                          </h3>
+                          <p className="text-xs sm:text-sm font-medium text-gray-500 mt-1">
+                            {isRTL ? spec.name : spec.nameAr}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Academic Description */}
+                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-5">
+                        {isRTL ? spec.descAr : spec.descEn}
+                      </p>
+
+                      {/* Skills & Competencies Tags */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {(isRTL ? spec.skillsAr : spec.skillsEn).map((skill, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center gap-1 text-[11px] font-medium bg-blue-50/50 text-gray-700 px-2.5 py-1 rounded-lg border border-blue-100"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Card Footer: Official MESRS Accreditation Seal & Degree */}
+                    <div className="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-1.5 text-gray-500 font-medium">
+                        <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                        <span>{isRTL ? 'معتمد من وزارة التعليم العالي' : 'MESRS Accredited'}</span>
+                      </div>
+                      <span className="font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/80">
+                        {isRTL ? spec.degreeAr : spec.degreeEn}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                );
+              })}
           </div>
 
           {/* Program Highlights */}
@@ -1253,10 +1622,10 @@ export default function HomePage() {
             <img
               src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=1200&h=600&fit=crop"
               alt="Students in classroom"
-              className="absolute inset-0 w-full h-full object-cover"
+              className={`absolute inset-0 w-full h-full object-cover ${isRTL ? '-scale-x-100' : ''}`}
             />
-            <div className={`absolute inset-0 bg-gradient-to-r ${isRTL ? 'from-indigo-900/80 md:from-transparent via-indigo-900/90 to-purple-900/95' : 'from-purple-900/95 via-indigo-900/90 to-indigo-900/80 md:to-transparent'}`} />
-            <div className={`relative flex items-center min-h-[500px] ${isRTL ? 'justify-end' : 'justify-start'}`}>
+            <div className={`absolute inset-0 ${isRTL ? 'bg-gradient-to-l from-purple-900/95 via-indigo-900/90 to-indigo-900/80 md:to-transparent' : 'bg-gradient-to-r from-purple-900/95 via-indigo-900/90 to-indigo-900/80 md:to-transparent'}`} />
+            <div className="relative flex items-center min-h-[500px] justify-start">
               <div className="max-w-2xl p-6 sm:p-12">
                 <h3 className="text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">{t.programs.bacProgram}</h3>
                 <p className="text-base sm:text-xl text-white/80 mb-6 sm:mb-8">
@@ -1456,14 +1825,33 @@ export default function HomePage() {
                           {t.wajihat.achievements}
                         </h4>
                         {center.galleryImages ? (
-                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
                             {center.galleryImages.map((img, idx) => (
-                              <div key={idx} className="relative aspect-video rounded-xl overflow-hidden shadow-lg group">
+                              <div
+                                key={idx}
+                                onClick={() => setLightbox({ url: img, title: `${t.wajihat[center.titleKey]} - ${t.wajihat.achievements} (${idx + 1})` })}
+                                className="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer bg-gray-100 border border-gray-200/80 hover:-translate-y-1.5"
+                              >
+                                {/* Full edge-to-edge image filling the frame completely */}
                                 <img
                                   src={img}
                                   alt={`${t.wajihat[center.titleKey]} ${idx + 1}`}
-                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                                 />
+
+                                {/* Subtle gradient overlay for contrast and depth */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-60 group-hover:opacity-85 transition-opacity duration-300" />
+
+                                {/* Floating modern glassmorphic tags and action pill */}
+                                <div className="absolute bottom-3 inset-x-3 flex items-center justify-between text-white pointer-events-none">
+                                  <span className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-white/95 text-xs font-semibold border border-white/20 flex items-center gap-1.5 shadow-sm">
+                                    <Camera className="w-3.5 h-3.5 text-amber-300" />
+                                    <span>{idx + 1}</span>
+                                  </span>
+                                  <span className="w-8 h-8 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                    <Maximize2 className="w-4 h-4 text-blue-600" />
+                                  </span>
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -1552,12 +1940,13 @@ export default function HomePage() {
               onClick={() => setSelectedNews(featuredNews)}
               className="group grid lg:grid-cols-2 rounded-3xl overflow-hidden bg-gray-900 shadow-xl hover:shadow-2xl transition-shadow duration-500 cursor-pointer mb-10"
             >
-              <div className="relative h-64 lg:h-auto lg:min-h-[420px] overflow-hidden">
+              <div className="relative h-64 lg:h-auto lg:min-h-[420px] overflow-hidden bg-gray-900">
                 <img
                   src={featuredNews.image}
                   alt={loc(featuredNews.title)}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
               </div>
               <div className="p-8 sm:p-12 flex flex-col justify-center text-white">
                 <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -1594,13 +1983,14 @@ export default function HomePage() {
                   onClick={() => setSelectedNews(item)}
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer flex flex-col"
                 >
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative h-56 sm:h-60 overflow-hidden bg-gray-100">
                     <img
                       src={item.image}
                       alt={loc(item.title)}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
-                    <span className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} px-3 py-1 rounded-full text-xs font-semibold shadow ${newsCategoryStyles[item.category]}`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-30 group-hover:opacity-50 transition-opacity" />
+                    <span className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} z-20 px-3 py-1 rounded-full text-xs font-semibold shadow-md ${newsCategoryStyles[item.category]}`}>
                       {t.news.categories[item.category]}
                     </span>
                   </div>
@@ -1958,49 +2348,76 @@ export default function HomePage() {
           </div>
 
           {/* Main Gallery Image */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-8">
+          <div 
+            onClick={() => setLightbox({ 
+              url: galleryImages[activeImage].url, 
+              title: isRTL ? (galleryImages[activeImage].altAr || galleryImages[activeImage].alt) : galleryImages[activeImage].alt 
+            })}
+            className="relative rounded-3xl overflow-hidden shadow-2xl mb-8 bg-gray-900 cursor-pointer group h-[420px] sm:h-[540px]"
+          >
             <img
               src={galleryImages[activeImage].url}
-              alt={galleryImages[activeImage].alt}
-              className="w-full h-[500px] object-cover transition-all duration-700"
+              alt={isRTL ? (galleryImages[activeImage].altAr || galleryImages[activeImage].alt) : galleryImages[activeImage].alt}
+              className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            <div className={`absolute bottom-8 ${isRTL ? 'right-8 left-8' : 'left-8 right-8'} flex justify-between items-end`}>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+
+            {/* Prev / Next arrows */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+              }}
+              className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'right-4 sm:right-6' : 'left-4 sm:left-6'} z-30 w-11 h-11 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md text-white flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-110 shadow-lg border border-white/20`}
+              aria-label="Previous"
+            >
+              <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveImage((prev) => (prev + 1) % galleryImages.length);
+              }}
+              className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'left-4 sm:left-6' : 'right-4 sm:right-6'} z-30 w-11 h-11 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md text-white flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-110 shadow-lg border border-white/20`}
+              aria-label="Next"
+            >
+              <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+            </button>
+
+            {/* Bottom Info & Counter */}
+            <div className={`absolute bottom-6 sm:bottom-8 ${isRTL ? 'right-6 sm:right-8 left-6 sm:left-8' : 'left-6 sm:left-8 right-6 sm:right-8'} z-30 flex flex-wrap justify-between items-end gap-4`}>
               <div>
                 <p className="text-white/80 text-sm mb-1">{t.gallery.campusGallery}</p>
-                <h3 className="text-2xl font-bold text-white">{galleryImages[activeImage].alt}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                  <span>{isRTL ? (galleryImages[activeImage].altAr || galleryImages[activeImage].alt) : galleryImages[activeImage].alt}</span>
+                  <Maximize2 className="w-4 h-4 text-white/70" />
+                </h3>
               </div>
-              <div className="flex gap-2">
-                {galleryImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveImage(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      activeImage === index ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/80'
-                    }`}
-                  />
-                ))}
+              <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-white text-xs font-semibold">
+                <span>{activeImage + 1}</span>
+                <span className="text-white/50">/</span>
+                <span className="text-white/80">{galleryImages.length}</span>
               </div>
             </div>
           </div>
 
           {/* Thumbnail Grid */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4">
             {galleryImages.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setActiveImage(index)}
-                className={`relative rounded-xl overflow-hidden aspect-square transition-all duration-300 ${
-                  activeImage === index ? 'ring-4 ring-cyan-500 scale-95' : 'hover:scale-105'
+                className={`relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-square transition-all duration-300 shadow-md group ${
+                  activeImage === index ? 'ring-4 ring-cyan-500 scale-95 shadow-xl' : 'hover:scale-105 opacity-85 hover:opacity-100'
                 }`}
               >
                 <img
                   src={image.url}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
+                  alt={isRTL ? (image.altAr || image.alt) : image.alt}
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                 />
                 {activeImage !== index && (
-                  <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors" />
                 )}
               </button>
             ))}
@@ -2115,11 +2532,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
-                  <img src="/assets/pic5.jpeg" alt="ENS-SM Logo" className="w-full h-full object-cover" style={{ imageRendering: '-webkit-optimize-contrast' }} />
+                <div className="w-20 h-20 rounded-full flex items-center justify-center shadow-2xl overflow-hidden bg-white p-1.5 ring-2 ring-amber-400/60 flex-shrink-0">
+                  <img src="/assets/pic5.jpeg" alt="ENSSM Logo" className="w-full h-full object-contain rounded-full" />
                 </div>
                 <div>
-                  <span className="font-bold text-2xl">ENSSM</span>
+                  <span className="font-bold text-2xl tracking-tight text-white">ENSSM</span>
                   <span className="text-gray-400 block text-sm">{t.footer.subtitle}</span>
                 </div>
               </div>
@@ -2238,6 +2655,41 @@ export default function HomePage() {
           font-family: 'Noto Sans Arabic', 'Segoe UI', sans-serif;
         }
       `}</style>
+
+      {/* High-Resolution Image Lightbox Modal */}
+      {lightbox && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-6 animate-fadeIn"
+          onClick={() => setLightbox(null)}
+        >
+          <div 
+            className="relative max-w-5xl max-h-[92vh] w-full flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute -top-12 right-0 p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white transition-all shadow-lg flex items-center gap-1.5 text-xs font-semibold"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5" />
+              <span>{isRTL ? 'إغلاق' : 'Close'}</span>
+            </button>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-950 flex items-center justify-center max-h-[82vh] w-auto border border-white/10">
+              <img
+                src={lightbox.url}
+                alt={lightbox.title || 'Preview'}
+                className="max-h-[82vh] max-w-full w-auto h-auto object-contain"
+              />
+            </div>
+            {lightbox.title && (
+              <p className="mt-4 text-center text-white/95 text-sm sm:text-base font-medium px-5 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/10 shadow-lg">
+                {lightbox.title}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
       <ChatBot />
     </div>
   );
