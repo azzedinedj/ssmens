@@ -1042,15 +1042,15 @@ export default function HomePage() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-3.5 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <div className="relative">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-xl transition-all duration-300 overflow-hidden bg-white p-1 ring-2 ring-amber-400/60 group-hover:scale-105">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer min-w-0" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <div className="relative flex-shrink-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-xl transition-all duration-300 overflow-hidden bg-white p-1 ring-2 ring-amber-400/60 group-hover:scale-105">
                   <img src="/assets/pic5.jpeg" alt="ENSSM Logo" className="w-full h-full object-contain rounded-full" />
                 </div>
               </div>
-              <div className="hidden sm:block">
-                <span className={`font-bold text-xl tracking-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>ENSSM</span>
-                <span className={`text-xs font-medium block transition-colors ${isScrolled ? 'text-gray-600' : 'text-white/90'}`}>{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم' : 'Higher School for Teachers of Deaf and Mute'}</span>
+              <div className="block min-w-0">
+                <span className={`font-bold text-base sm:text-xl tracking-tight block leading-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>ENSSM</span>
+                <span className={`text-[9px] sm:text-xs font-medium block leading-tight transition-colors line-clamp-2 sm:line-clamp-none max-w-[155px] xs:max-w-[220px] sm:max-w-none ${isScrolled ? 'text-gray-600' : 'text-white/90'}`}>{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم' : 'Higher School for Teachers of Deaf and Mute'}</span>
               </div>
             </div>
 

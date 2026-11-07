@@ -140,13 +140,13 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="relative z-10 border-b border-white/10 bg-white/5 backdrop-blur-xl flex-shrink-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white p-1 ring-2 ring-amber-400/60 shadow-md group-hover:scale-105 transition-all overflow-hidden">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+            <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full flex-shrink-0 flex items-center justify-center bg-white p-1 ring-2 ring-amber-400/60 shadow-md group-hover:scale-105 transition-all overflow-hidden">
               <img src="/assets/pic5.jpeg" alt="ENSSM Logo" className="w-full h-full object-contain rounded-full" />
             </div>
-            <div className="hidden sm:block">
+            <div className="block min-w-0">
               <p className="text-white font-bold text-sm leading-none">ENSSM</p>
-              <p className="text-white/50 text-xs">User Portal</p>
+              <p className="text-white/50 text-[10px] sm:text-xs">User Portal</p>
             </div>
           </Link>
 
