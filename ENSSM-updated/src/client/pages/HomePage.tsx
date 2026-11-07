@@ -34,9 +34,13 @@ const translations = {
     // Stats
     stats: {
       studentsEnrolled: 'Students Enrolled',
+      studentsEnrolledSub: 'Across specialized cohorts',
       specializations: 'Specializations',
+      specializationsSub: 'In 5 academic departments',
       bacProgram: 'Baccalaureate Program',
+      bacProgramSub: 'Specialized 6-year training cycle',
       firstGraduates: 'Graduates',
+      firstGraduatesSub: 'Serving schools nationwide',
     },
 // About
     about: {
@@ -238,9 +242,13 @@ title2: 'Education in Algeria',
     // Stats
     stats: {
       studentsEnrolled: 'طالب مسجل',
-      specializations: 'تخصص',
+      studentsEnrolledSub: 'عبر مختلف الدفعات المتخصصة',
+      specializations: 'تخصص معتمد',
+      specializationsSub: 'موزعة على 5 أقسام تعليمية',
       bacProgram: 'برنامج البكالوريا',
-      firstGraduates: ' دفعة خريجين',
+      bacProgramSub: 'سنوات التكوين المتخصص',
+      firstGraduates: 'أستاذ خريج',
+      firstGraduatesSub: 'في الميدان التربوي الوطني',
     },
     // About
     about: {
@@ -678,10 +686,54 @@ const specializations: SpecializationItem[] = [
 ];
 
 const stats = [
-  { value: 600, suffix: '+', suffixAr: '+', labelKey: 'studentsEnrolled' as const, icon: Users, color: 'from-blue-500 to-cyan-500' },
-  { value: 15, suffix: '', suffixAr: '', labelKey: 'specialitie' as const, icon: BookOpen, color: 'from-purple-500 to-pink-500' },
-  { value: 6, suffix: ' Years', suffixAr: ' سنوات', labelKey: 'bacProgram' as const, icon: Clock, color: 'from-orange-500 to-red-500' },
-  { value: 1000, suffix: '+', suffixAr: '+', labelKey: 'firstGraduates' as const, icon: Award, color: 'from-green-500 to-emerald-500' },
+  { 
+    value: 600, 
+    suffix: '+', 
+    suffixAr: '+', 
+    labelKey: 'studentsEnrolled' as const, 
+    subKey: 'studentsEnrolledSub' as const,
+    icon: Users, 
+    accentGradient: 'from-blue-600 via-sky-500 to-cyan-400',
+    iconBox: 'bg-blue-50/90 text-blue-600 ring-1 ring-blue-500/20 group-hover:bg-blue-600 group-hover:text-white',
+    watermarkColor: 'text-blue-600',
+    suffixClass: 'text-blue-600 text-2xl sm:text-3xl font-extrabold ml-1',
+  },
+  { 
+    value: 15, 
+    suffix: '', 
+    suffixAr: '', 
+    labelKey: 'specializations' as const, 
+    subKey: 'specializationsSub' as const,
+    icon: BookOpen, 
+    accentGradient: 'from-indigo-600 via-indigo-500 to-purple-400',
+    iconBox: 'bg-indigo-50/90 text-indigo-600 ring-1 ring-indigo-500/20 group-hover:bg-indigo-600 group-hover:text-white',
+    watermarkColor: 'text-indigo-600',
+    suffixClass: 'text-indigo-600 text-2xl sm:text-3xl font-extrabold ml-1',
+  },
+  { 
+    value: 6, 
+    suffix: ' Years', 
+    suffixAr: ' سنوات', 
+    labelKey: 'bacProgram' as const, 
+    subKey: 'bacProgramSub' as const,
+    icon: Clock, 
+    accentGradient: 'from-amber-500 via-orange-500 to-amber-400',
+    iconBox: 'bg-amber-50/90 text-amber-600 ring-1 ring-amber-500/20 group-hover:bg-amber-600 group-hover:text-white',
+    watermarkColor: 'text-amber-600',
+    suffixClass: 'text-amber-600 text-xl sm:text-2xl font-bold ml-1.5',
+  },
+  { 
+    value: 1000, 
+    suffix: '+', 
+    suffixAr: '+', 
+    labelKey: 'firstGraduates' as const, 
+    subKey: 'firstGraduatesSub' as const,
+    icon: Award, 
+    accentGradient: 'from-emerald-600 via-teal-500 to-emerald-400',
+    iconBox: 'bg-emerald-50/90 text-emerald-600 ring-1 ring-emerald-500/20 group-hover:bg-emerald-600 group-hover:text-white',
+    watermarkColor: 'text-emerald-600',
+    suffixClass: 'text-emerald-600 text-2xl sm:text-3xl font-extrabold ml-1',
+  },
 ];
 
 const galleryImages: { url: string; alt: string; altAr?: string }[] = [
@@ -775,7 +827,7 @@ const newsItems: {
   {
     id: 'partnerships',
     category: 'partnerships',
-    image: '/assets/35.jpg',
+    image: '/assets/partnerships.jpg',
     title: { en: 'A Growing Network of 15+ Partnerships', ar: 'شبكة متنامية من أكثر من 15 شراكة' },
     excerpt: { en: 'ENSSM collaborates with national and international institutions on research, training and accessibility.', ar: 'تتعاون المدرسة مع مؤسسات وطنية ودولية في مجالات البحث والتكوين وإمكانية الوصول.' },
     body: [
@@ -891,7 +943,7 @@ function FallbackImage({ src, fallback, alt, className }: { src: string; fallbac
 }
 
 
-function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+function AnimatedCounter({ value, suffix, suffixClassName }: { value: number; suffix: string; suffixClassName?: string }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -916,7 +968,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
           }, 16);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     const element = document.getElementById(`counter-${value}`);
@@ -926,8 +978,13 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   }, [value, hasAnimated]);
 
   return (
-    <span id={`counter-${value}`} className="tabular-nums">
-      {count}{suffix}
+    <span id={`counter-${value}`} className="tabular-nums inline-flex items-baseline">
+      <span>{count}</span>
+      {suffix && (
+        <span className={suffixClassName || "text-blue-600 text-2xl sm:text-3xl font-extrabold ml-1"}>
+          {suffix}
+        </span>
+      )}
     </span>
   );
 }
@@ -1015,13 +1072,13 @@ export default function HomePage() {
   }, [selectedNews, selectedEvent, lightbox]);
 
   const navBefore = [
-    { key: 'about', label: t.nav.about },
-    { key: 'programs', label: t.nav.programs },
-    { key: 'wajihat', label: t.nav.wajihat },
+    { key: 'about', label: t.nav.about, icon: Building2, badge: 'bg-blue-50 text-blue-600 ring-1 ring-blue-500/15' },
+    { key: 'programs', label: t.nav.programs, icon: BookOpen, badge: 'bg-indigo-50 text-indigo-600 ring-1 ring-indigo-500/15' },
+    { key: 'wajihat', label: t.nav.wajihat, icon: Building, badge: 'bg-purple-50 text-purple-600 ring-1 ring-purple-500/15' },
   ];
   const navAfter = [
-    { key: 'admission', label: t.nav.admission },
-    { key: 'gallery', label: t.nav.gallery },
+    { key: 'admission', label: t.nav.admission, icon: CheckCircle2, badge: 'bg-emerald-50 text-emerald-600 ring-1 ring-emerald-500/15' },
+    { key: 'gallery', label: t.nav.gallery, icon: Images, badge: 'bg-amber-50 text-amber-600 ring-1 ring-amber-500/15' },
   ];
   const goToEvent = (i: number) => setEventIndex((i + eventItems.length) % eventItems.length);
   const loc = (x: Localized) => x[language];
@@ -1150,47 +1207,117 @@ export default function HomePage() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-xl transition-all duration-300 ${
-          mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}>
-          <div className="px-4 py-6 space-y-2">
+        <div
+          className={`md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/90 transition-all duration-300 ease-out overflow-hidden max-h-[85vh] overflow-y-auto ${
+            mobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 pointer-events-none invisible'
+          }`}
+        >
+          <div className="p-4 sm:p-5 space-y-1.5">
+            {/* Header section tag */}
+            <div className="flex items-center justify-between pb-3 mb-1 border-b border-slate-100 px-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                {isRTL ? 'أقسام الموقع' : 'Navigation Menu'}
+              </span>
+              <span className="text-[11px] font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">
+                ENSSM
+              </span>
+            </div>
+
             {navBefore.map((item) => (
-              <button key={item.key} onClick={() => scrollToSection(item.key)} className={`block w-full ${isRTL ? 'text-right' : 'text-left'} py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}>
-                {item.label}
+              <button
+                key={item.key}
+                onClick={() => scrollToSection(item.key)}
+                className="group flex items-center justify-between w-full p-2.5 rounded-2xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 active:bg-blue-100/60 transition-all duration-200 font-semibold text-base"
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.badge} transition-transform duration-200 group-hover:scale-105 shadow-xs flex-shrink-0`}>
+                    <item.icon className="w-5 h-5 stroke-[2]" />
+                  </div>
+                  <span>{item.label}</span>
+                </div>
+                {isRTL ? (
+                  <ChevronLeft className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:-translate-x-1 transition-all" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                )}
               </button>
             ))}
-            {/* Mobile News group */}
-            <button
-              onClick={() => setMobileNewsOpen((open) => !open)}
-              aria-expanded={mobileNewsOpen}
-              className={`flex w-full items-center justify-between py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}
-            >
-              {t.nav.news}
-              <ChevronDown className={`w-4 h-4 transition-transform ${mobileNewsOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {mobileNewsOpen && (
-              <div className={`${isRTL ? 'pr-4 border-r-2 mr-4' : 'pl-4 border-l-2 ml-4'} border-blue-100 space-y-1`}>
-                <button onClick={() => { scrollToSection('news'); setMobileNewsOpen(false); }} className={`block w-full ${isRTL ? 'text-right' : 'text-left'} py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}>
-                  {t.nav.news}
-                </button>
-                <button onClick={() => { scrollToSection('events'); setMobileNewsOpen(false); }} className={`block w-full ${isRTL ? 'text-right' : 'text-left'} py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}>
-                  {t.nav.events}
-                </button>
-              </div>
-            )}
+
+            {/* Mobile News dropdown group */}
+            <div className="rounded-2xl transition-colors">
+              <button
+                onClick={() => setMobileNewsOpen((open) => !open)}
+                aria-expanded={mobileNewsOpen}
+                className="group flex items-center justify-between w-full p-2.5 rounded-2xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 active:bg-blue-100/60 transition-all duration-200 font-semibold text-base"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-sky-50 text-sky-600 ring-1 ring-sky-500/15 transition-transform duration-200 group-hover:scale-105 shadow-xs flex-shrink-0">
+                    <Newspaper className="w-5 h-5 stroke-[2]" />
+                  </div>
+                  <span>{t.nav.news}</span>
+                </div>
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-transform duration-300 ${
+                    mobileNewsOpen ? 'rotate-180 text-blue-600' : ''
+                  }`}
+                />
+              </button>
+              {mobileNewsOpen && (
+                <div className={`my-1 py-1 space-y-1 ${isRTL ? 'mr-12 border-r-2 pr-2' : 'ml-12 border-l-2 pl-2'} border-blue-200/60`}>
+                  <button
+                    onClick={() => { scrollToSection('news'); setMobileNewsOpen(false); }}
+                    className="flex items-center justify-between w-full py-2 px-3 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50/50 transition-colors text-sm font-medium"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Newspaper className="w-4 h-4 text-sky-500" />
+                      {t.nav.news}
+                    </span>
+                    {isRTL ? <ChevronLeft className="w-3.5 h-3.5 text-slate-400" /> : <ChevronRight className="w-3.5 h-3.5 text-slate-400" />}
+                  </button>
+                  <button
+                    onClick={() => { scrollToSection('events'); setMobileNewsOpen(false); }}
+                    className="flex items-center justify-between w-full py-2 px-3 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50/50 transition-colors text-sm font-medium"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-purple-500" />
+                      {t.nav.events}
+                    </span>
+                    {isRTL ? <ChevronLeft className="w-3.5 h-3.5 text-slate-400" /> : <ChevronRight className="w-3.5 h-3.5 text-slate-400" />}
+                  </button>
+                </div>
+              )}
+            </div>
+
             {navAfter.map((item) => (
-              <button key={item.key} onClick={() => scrollToSection(item.key)} className={`block w-full ${isRTL ? 'text-right' : 'text-left'} py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}>
-                {item.label}
+              <button
+                key={item.key}
+                onClick={() => scrollToSection(item.key)}
+                className="group flex items-center justify-between w-full p-2.5 rounded-2xl text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 active:bg-blue-100/60 transition-all duration-200 font-semibold text-base"
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.badge} transition-transform duration-200 group-hover:scale-105 shadow-xs flex-shrink-0`}>
+                    <item.icon className="w-5 h-5 stroke-[2]" />
+                  </div>
+                  <span>{item.label}</span>
+                </div>
+                {isRTL ? (
+                  <ChevronLeft className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:-translate-x-1 transition-all" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                )}
               </button>
             ))}
-            {/* Mobile Contact */}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className={`block w-full ${isRTL ? 'text-right' : 'text-left'} py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors font-medium`}
-            >
-              {t.nav.contactUs}
-            </button>
-            
+
+            {/* Mobile Contact CTA Button */}
+            <div className="pt-3 border-t border-slate-100 mt-2">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white font-bold text-base shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-300 active:scale-[0.98]"
+              >
+                <Mail className="w-5 h-5" />
+                <span>{t.nav.contactUs}</span>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -1274,24 +1401,49 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section id="stats" className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
+      <section id="stats" className="py-16 sm:py-20 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 relative overflow-hidden border-y border-slate-100">
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-35 pointer-events-none" />
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <div
                 key={stat.labelKey}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
+                className="group relative bg-white rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_40px_-8px_rgba(15,23,42,0.12)] transition-all duration-500 hover:-translate-y-2 border border-slate-100/90 hover:border-slate-200 overflow-hidden flex flex-col justify-between"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`} />
-                <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className="w-8 h-8 text-white" />
+                {/* Top decorative gradient bar */}
+                <div className={`absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r ${stat.accentGradient} opacity-90 group-hover:opacity-100 transition-opacity`} />
+                
+                {/* Background watermark icon */}
+                <stat.icon className={`absolute ${isRTL ? '-left-3' : '-right-3'} -bottom-3 w-28 h-28 ${stat.watermarkColor} opacity-[0.05] group-hover:opacity-[0.14] group-hover:scale-110 transition-all duration-500 pointer-events-none`} />
+
+                <div>
+                  {/* Icon badge */}
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${stat.iconBox} shadow-sm group-hover:scale-110 mb-6`}>
+                    <stat.icon className="w-7 h-7 stroke-[2]" />
+                  </div>
+
+                  {/* Value */}
+                  <div className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight flex items-baseline">
+                    <AnimatedCounter 
+                      value={stat.value} 
+                      suffix={isRTL ? stat.suffixAr : stat.suffix} 
+                      suffixClassName={stat.suffixClass}
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="text-lg font-bold text-slate-800 mt-2.5 leading-snug group-hover:text-blue-600 transition-colors">
+                    {t.stats[stat.labelKey]}
+                  </h4>
                 </div>
-                <div className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                  <AnimatedCounter value={stat.value} suffix={isRTL ? stat.suffixAr : stat.suffix} />
-                </div>
-                <div className="text-gray-600 font-medium">{t.stats[stat.labelKey]}</div>
+
+                {/* Subtitle description */}
+                <p className="text-xs text-slate-500 mt-3 font-medium border-t border-slate-100 pt-3 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-blue-500 transition-colors inline-block" />
+                  {t.stats[stat.subKey]}
+                </p>
               </div>
             ))}
           </div>
@@ -1340,7 +1492,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="text-center pb-2">
-                  <h3 className="text-xl font-bold text-gray-900">{isRTL ? 'مدير المدرسة العليا' : "Director of the Higher School"}</h3>
+                  <h3 className="text-xl font-bold text-gray-900">{isRTL ? 'مدير المدرسة العليا' : "Director of the ENSSM"}</h3>
                   <p className="text-xl font-bold text-blue-600 mt-1">{isRTL ? 'أ.د. زقار فتحي' : 'Pr. ZEGAR FETHI'}</p>
                   <p className="text-xs text-gray-500 mt-1">{isRTL ? 'المدرسة العليا لأساتذة الصم والبكم - بني مسوس' : 'Higher School for Teachers of Deaf and Mute - Beni Messous'}</p>
                 </div>
@@ -1450,10 +1602,16 @@ export default function HomePage() {
           </div>
 
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 hidden lg:block" />
+            {/* Timeline Line (Visible on mobile, tablet, and desktop) */}
+            <div
+              className={`absolute ${
+                isRTL
+                  ? 'right-4 sm:right-6 translate-x-1/2'
+                  : 'left-4 sm:left-6 -translate-x-1/2'
+              } lg:left-1/2 lg:-translate-x-1/2 lg:right-auto top-6 bottom-6 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-400 rounded-full shadow-lg shadow-cyan-500/20`}
+            />
 
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {[
                 { year: '2021', eventKey: 'presidential', descKey: 'presidentialDesc' },
                 { year: '2022', eventKey: 'inauguration', descKey: 'inaugurationDesc' },
@@ -1464,24 +1622,42 @@ export default function HomePage() {
               ].map((item, index) => (
                 <div
                   key={item.eventKey}
-                  className={`relative flex flex-col lg:flex-row items-center gap-8 ${
+                  className={`group relative flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-8 ${
                     index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                   }`}
                 >
-                  <div className={`flex-1 ${index % 2 === 0 ? (isRTL ? 'lg:text-left' : 'lg:text-right') : (isRTL ? 'lg:text-right' : 'lg:text-left')}`}>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                      <span className="text-5xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent">
+                  {/* Card wrapper */}
+                  <div className={`flex-1 w-full ${isRTL ? 'pr-10 sm:pr-14 lg:pr-0' : 'pl-10 sm:pl-14 lg:pl-0'} ${
+                    index % 2 === 0
+                      ? (isRTL ? 'lg:text-left' : 'lg:text-right')
+                      : (isRTL ? 'lg:text-right' : 'lg:text-left')
+                  }`}>
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white/[0.18] transition-all duration-300 border border-white/15 hover:border-cyan-400/40 shadow-xl hover:shadow-cyan-500/10 hover:-translate-y-1">
+                      <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-cyan-300 via-sky-200 to-purple-300 bg-clip-text text-transparent block mb-3">
                         {item.year}
                       </span>
-                      <h3 className="text-2xl font-bold text-white mt-4 mb-2">{t.timeline[item.eventKey as keyof typeof t.timeline]}</h3>
-                      <p className="text-white/70">{t.timeline[item.descKey as keyof typeof t.timeline]}</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-snug">
+                        {t.timeline[item.eventKey as keyof typeof t.timeline]}
+                      </h3>
+                      <p className="text-sm sm:text-base text-white/75 leading-relaxed">
+                        {t.timeline[item.descKey as keyof typeof t.timeline]}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Center Dot */}
-                  <div className="relative z-10 w-6 h-6 bg-white rounded-full shadow-lg shadow-purple-500/50 hidden lg:block" />
+                  {/* Dot (Visible on both mobile & desktop) */}
+                  <div
+                    className={`absolute ${
+                      isRTL
+                        ? 'right-4 sm:right-6 translate-x-1/2'
+                        : 'left-4 sm:left-6 -translate-x-1/2'
+                    } top-8 lg:static lg:translate-x-0 z-10 w-6 h-6 rounded-full bg-white ring-4 ring-cyan-400/50 shadow-lg shadow-cyan-500/50 flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-125`}
+                  >
+                    <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-500" />
+                  </div>
 
-                  <div className="flex-1" />
+                  {/* Desktop empty spacer for alternating layout */}
+                  <div className="flex-1 hidden lg:block" />
                 </div>
               ))}
             </div>
